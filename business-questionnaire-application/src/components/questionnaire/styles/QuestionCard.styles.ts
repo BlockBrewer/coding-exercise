@@ -1,0 +1,60 @@
+import { CSSProperties } from "react";
+
+export const styles: Record<string, CSSProperties> = {
+  container: {
+    display: "grid",
+    gap: "1rem",
+  },
+  questionTitle: {
+    fontSize: "1.125rem",
+    fontWeight: "bold",
+  },
+  displayOnEnd: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  optionsContainer: {
+    display: "grid",
+    gap: "0.5rem",
+  },
+  button: {
+    display: "flex",
+    justifyContent: "flex-start",
+    padding: "0.5rem 1rem",
+    border: "1px solid #e5e7eb",
+    borderRadius: "0.375rem",
+    backgroundColor: "transparent",
+    color: "#374151",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
+    cursor: "pointer",
+    transition: "background-color 0.2s, color 0.2s",
+  },
+  input: {
+    display: "flex",
+    justifyContent: "flex-start",
+    padding: "0.5rem 1rem",
+    border: "1px solid #e5e7eb",
+    borderRadius: "0.375rem",
+    backgroundColor: "transparent",
+    color: "#374151",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
+    cursor: "pointer",
+    transition: "background-color 0.2s, color 0.2s",
+    width: "90%",
+    margin: "0 auto",
+    marginBottom: "1rem",
+  },
+  submitButton: {
+    padding: "0.5rem 1rem",
+    border: "1px solid #e5e7eb",
+    borderRadius: "0.375rem",
+    backgroundColor: "#6b7280",
+    color: "#FFF",
+    fontSize: "0.875rem",
+    fontWeight: "normal",
+    cursor: "pointer",
+    transition: "background-color 0.2s, color 0.2s",
+  },
+};
