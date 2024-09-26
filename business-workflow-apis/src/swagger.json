@@ -1,0 +1,209 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Business Workflow API",
+      "version": "1.0.0",
+      "description": "API documentation for the Business Workflow service."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/businesses": {
+        "get": {
+          "summary": "Get all businesses",
+          "tags": ["Business"],
+          "responses": {
+            "200": {
+              "description": "A list of businesses",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Business"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/business": {
+        "post": {
+          "summary": "Create a new business",
+          "tags": ["Business"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Business created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Business"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/business/{id}": {
+        "get": {
+          "summary": "Get a business by ID",
+          "tags": ["Business"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "ID of the business to retrieve"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Business retrieved successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Business"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Business not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update the business status",
+          "tags": ["Business"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "ID of the business to update"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Business updated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Business"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Business not found"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Business": {
+          "type": "object",
+          "properties": {
+            "FEIN": {
+              "type": "string",
+              "example": "123456789"
+            },
+            "name": {
+              "type": "string",
+              "example": "Example Business"
+            },
+            "classification": {
+              "type": "object",
+              "properties": {
+                "bureau": {
+                  "type": "string",
+                  "example": "WCIRB"
+                },
+                "classCode": {
+                  "type": "string",
+                  "example": "9079"
+                }
+              }
+            },
+            "phoneNumber": {
+              "type": "string",
+              "example": "1234567890"
+            },
+            "xMod": {
+              "type": "number",
+              "example": 1.0
+            },
+            "status": {
+              "type": "string",
+              "enum": ["New", "Market Approved", "Market Declined", "Sales Approved", "Sales Declined"],
+              "example": "New"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-09-25T23:25:39.168Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-09-25T23:25:39.168Z"
+            }
+          }
+        }
+      }
+    }
+  }
+  
